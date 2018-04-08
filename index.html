@@ -1,0 +1,451 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>2 - Operadores</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/white.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/portugol-studio-dark.css">
+
+		<!-- Custom -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+		<link rel="stylesheet" href="css/custom.css">
+
+		<!-- Favicon -->
+		<link rel="apple-touch-icon" sizes="152x152" href="images/favicon/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="images/favicon/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="images/favicon/favicon-16x16.png">
+		<link rel="manifest" href="images/favicon/site.webmanifest">
+		<link rel="mask-icon" href="images/favicon/safari-pinned-tab.svg" color="#2980B9">
+		<meta name="msapplication-TileColor" content="#2980B9">
+		<meta name="theme-color" content="#2980B9">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1>Lógica de Programação</h1>
+					<h2>Operadores</h2>
+					<p>Prof. Marco Antonio Andrade</p>
+				</section>
+				<section class="left">
+					<h2>Sumário</h2>
+					<ul>
+						<li>Operação de atribuição</li>
+						<li>Operadores aritméticos</li>
+						<li>Operadores relacionais</li>
+						<li>Operadores lógicos</li>
+					</ul>
+				</section>
+				<section>
+					<h2>Operação de atribuição</h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	inteiro idade
+	idade = 12
+	escreva(idade)
+	idade = 10
+	escreva(idade)
+					</code></pre>
+					<div class="alert-yellow fragment fade-up">Observe que ao declararar a variável idade não há nenhum dado dentro dela enquanto valores não forem atribuídos</div>
+				</section>
+				<section>
+					<h2>Operação de atribuição</h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	inteiro idade_pai
+	inteiro idade_mae
+	idade_pai = 34
+	idade_mae = 32
+	escreva(idade_pai)
+	escreva(idade_mae)
+	idade_mae = idade_pai
+	escreva(idade_mae)
+	idade_pai = 31
+	escreva(idade_pai)
+	escreva(idade_mae)
+					</code></pre>
+					<div class="alert-yellow fragment fade-up left">
+						1) Uma variável pode receber o valor que está contido em outra variável.<br>
+						2) Uma variável só pode receber o valor de uma variável do mesmo tipo.
+					</div>
+				</section>
+				<section>
+					<h2>Operação de atribuição</h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	caracter sexo
+	real salario
+	inteiro quantidade = 2
+	escreva(sexo)
+	escreva(salario)
+	escreva(quantidade)
+					</code></pre>
+					<div class="alert-red fragment fade-up">Será gerado um erro, pois as variáveis sexo e salario, apesar de terem sido declaradas, não receberam nenhum valor, ou seja, não foram inicializadas.</div>
+				</section>
+				<section>
+					<h2>Incremento</h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	inteiro qtd_produto = 10
+	escreva(qtd_produto)
+	qtd_produto++
+	escreva(qtd_produto)
+					</code></pre>
+					<div class="alert-green fragment fade-up">Incrementar uma variável é a mesa coisa que:<br>
+					qtd_produto = qtd_produto + 1</div>
+				</section>
+				<section>
+					<h2>Decremento</h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	inteiro qtd_produto = 10
+	escreva(qtd_produto)
+	qtd_produto--
+	escreva(qtd_produto)
+					</code></pre>
+					<div class="alert-green fragment fade-up">Decrementar uma variável é a mesa coisa que:<br>
+					qtd_produto = qtd_produto - 1</div>
+				</section>
+				<section>
+					<h2>Operadores aritméticos</h2>
+					<table>
+						<tr>
+							<th>Operação</th>
+							<th>Operador</th>
+							<th>Prioridade</th>
+						</tr>
+						<tr>
+							<td>Adição</td>
+							<td>+</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>Subtração</td>
+							<td>-</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>Multiplicação</td>
+							<td>*</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>Divisão</td>
+							<td>/</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>Resto da divisão</td>
+							<td>%</td>
+							<td>2</td>
+						</tr>
+					</table>
+					<div class="alert-blue fragment fade-up">Quanto maior a prioridade antes a operação será efetuada: 5 + 2 * 3 = ?</div>
+				</section>
+				<section data-markdown>
+					<textarea data-template>
+						## Ordem das operações
+						1. O que está dentro de parênteses.
+						2. As operações de maior prioridade (multiplicação, divisão e resto da
+						divisão) <!-- .element: class="fragment" data-fragment-index="1" -->
+						3. As operações de menor prioridade (soma e subtração) <!-- .element: class="fragment" data-fragment-index="2" -->
+					</textarea>
+				</section>
+				<section>
+					<h2>Operadores aritméticos</h2>
+					<pre><code class="hlj portugols" data-trim contenteditable>
+	5 * 3 – 2 = ?
+	3 + 2 = ?
+	10 – 10 – 10 = ?
+	5 * (3 – 2) = ?
+	9 % 2 = ?
+	3 * 2 + (2 – 3) = ?
+	18 % 3 = ?
+	9 % 3 = ?
+					</code></pre>
+				</section>
+				<section>
+					<h2>Operadores aritméticos</h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	real salario
+	salario = 900.0 + 88.0
+	escreva(salario)
+	salario = salario - 50.0
+	escreva(salario)
+					</code></pre>
+					<div class="alert-yellow fragment fade-up">Uma variável (do tipo inteiro ou real) também pode receber uma expressão aritmética</div>
+				</section>
+				<section>
+					<h2>Concatenação</h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	cadeia nome = "Maria"
+	cadeia sobrenome = "da Silva"
+	escreva(nome + sobrenome)
+	escreva(nome + " " + sobrenome)
+					</code></pre>
+					<div class="alert-yellow fragment fade-up">Observe que na linha 4 a saída será concatenada entre o conteúdo da variável nome e o conteúdo da variável sobrenome, com um espaço entre elas.</div>
+				</section>				
+				<section>
+					<h2>Concatenação</h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	cadeia nome = "Maria"
+	real salario
+	salario = 900.0 + 88.0
+	escreva(nome + salario)
+	escreva("O funcionário " + nome + " ganha R$ " + salario + " por mês")	
+					</code></pre>
+				</section>				
+				<section>
+					<h2>Operadores relacionais</h2>
+					<table>
+						<tr>
+							<th>Operação</th>
+							<th>Operador</th>
+						</tr>
+						<tr>
+							<td>Maior</td>
+							<td>></td>
+						</tr>
+						<tr>
+							<td>Maior ou igual</td>
+							<td>>=</td>
+						</tr>							
+						<tr>
+							<td>Menor</td>
+							<td><</td>
+						</tr>
+						<tr>
+							<td>Menor ou igual</td>
+							<td><=</td>
+						</tr>
+						<tr>
+							<td>Igual</td>
+							<td>==</td>
+						</tr>
+						<tr>
+							<td>Diferente</td>
+							<td>!=</td>
+						</tr>																			
+					</table>
+					<div class="alert-yellow fragment fade-up">O resultado de uma expressão com operadores relacionais é um valor lógico (<b>verdadeiro</b> ou <b>falso</b>)</div>
+				</section>				
+				<section>
+					<h2>Operadores relacionais</h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	2 > 8 = ?
+	8 > 2 = ?
+	0 == 0 = ?
+	3 + 2 >= 5 = ?
+	8 == 10 – 2 = ?
+	1 != -1 = ?
+	7 < 10 = ?
+	12 == -12 = ?
+					</code></pre>
+				</section>							
+				<section>
+					<h2>Operadores lógicos</h2>
+					<table>
+						<tr>
+							<th>Operação</th>
+							<th>Operador</th>
+							<th>Prioridade</th>
+						</tr>
+						<tr>
+							<td>Disjunção</td>
+							<td>ou</td>
+							<td>1</td>
+						</tr>
+						<tr>
+							<td>Conjunção</td>
+							<td>e</td>
+							<td>2</td>
+						</tr>
+						<tr>
+							<td>Negação</td>
+							<td>não</td>
+							<td>3</td>
+						</tr>														
+					</table>
+				</section>		
+				<section>
+					<h2>Operação lógica <b>não</b></h2>
+					<table>
+						<tr>
+							<th>A</th>
+							<th><b>não</b> A</th>
+						</tr>
+						<tr>
+							<td>F</td>
+							<td>V</td>
+						</tr>
+						<tr>
+							<td>V</td>
+							<td>F</td>
+						</tr>												
+					</table>
+				</section>		
+				<section>
+					<h2>Operação lógica <b>não</b></h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	nao falso = ?
+	real salario = 1200.00
+	inteiro idade = 12
+	nao(salario > 1000.00) = ?
+	nao(idade == 12) = ?
+	nao(idade < 10) = ?
+	nao(idade > 10) = ?
+	nao(idade >= 12) = ?
+					</code></pre>
+				</section>		
+				<section>
+					<h2>Operação lógica <b>e</b></h2>
+					<table>
+						<tr>
+							<th>A</th>
+							<th>B</th>
+							<th>A <b>e</b> B</th>
+						</tr>
+						<tr>
+							<td>F</td>
+							<td>F</td>
+							<td>F</td>
+						</tr>
+						<tr>
+							<td>F</td>
+							<td>V</td>
+							<td>F</td>
+						</tr>
+						<tr>
+							<td>V</td>
+							<td>F</td>
+							<td>F</td>
+						</tr>
+						<tr>
+							<td>V</td>
+							<td>V</td>
+							<td>V</td>
+						</tr>														
+					</table>
+					<div class="alert-green fragment fade-up">Na operação lógica e o resultado só é <b>verdadeiro</b> caso <u>ambas as entradas forem verdadeiras</u>.</div>
+				</section>
+				<section>
+					<h2>Operação lógica <b>e</b></h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+(5 < 6) e (6 == 6) = ?
+(5 < 6) e (6 > 6) = ?
+(4 < 6) e nao(6 == 6) = ?
+real salario = 900.00
+inteiro idade = 19
+(salario < 1000.00) e (idade > 18) = ?
+inteiro num1 = 10, num2 = 15
+nao(num1 > 18) e (num2 == 15) = ?
+(num1 > 18) e (num2 == 15) = ?
+nao(num1 > 18) e nao(num2 == 15) = ?
+					</code></pre>
+			</section>
+				<section>
+					<h2>Operação lógica <b>ou</b></h2>
+					<table>
+						<tr>
+							<th>A</th>
+							<th>B</th>
+							<th>A <b>ou</b> B</th>
+						</tr>
+						<tr>
+							<td>F</td>
+							<td>F</td>
+							<td>F</td>
+						</tr>
+						<tr>
+							<td>F</td>
+							<td>V</td>
+							<td>V</td>
+						</tr>
+						<tr>
+							<td>V</td>
+							<td>F</td>
+							<td>V</td>
+						</tr>
+						<tr>
+							<td>V</td>
+							<td>V</td>
+							<td>V</td>
+						</tr>														
+					</table>
+					<div class="alert-green fragment fade-up">Na operação lógica ou o resultado é <b>verdadeiro</b> caso <u>pelo menos uma entrada for verdadeira</u>.</div>
+				</section>
+				<section>
+					<h2>Operação lógica <b>ou</b></h2>
+					<pre><code class="hljs portugol" data-trim contenteditable>
+	(5 < 6) e (6 == 6) = ?
+	(5 < 6) e (6 > 6) = ?
+	(4 < 6) e nao(6 == 6) = ?
+	real salario = 900.00
+	inteiro idade = 19
+	(salario < 1000.00) e (idade > 18) = ?
+	inteiro num1 = 10, num2 = 15
+	nao(num1 > 18) e (num2 == 15) = ?
+	(num1 > 18) e (num2 == 15) = ?
+	nao(num1 > 18) e nao(num2 == 15) = ?	
+					</code></pre>
+				</section>											
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			function getParameterByName(name, url) {
+				if (!url) url = window.location.href;
+				name = name.replace(/[\[\]]/g, '\\$&');
+				var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+				results = regex.exec(url);
+				if (!results) return null;
+				if (!results[2]) return '';
+				return decodeURIComponent(results[2].replace(/\+/g, ' '));
+			}
+			var role = getParameterByName('role');
+			role = role === 'master' ? role : 'client';
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				center: false, // centraliza os slides
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+				slideNumber: false,
+				width: "100%",
+				height: "100%",
+				margin: 0.1,
+				minScale: 1,
+				maxScale: 1,
+				/*
+				multiplex: {
+					secret: null,
+					id: null,
+					url: 'https://reveal-js-multiplex-ccjbegmaii.now.sh'
+				},*/
+				dependencies: [
+					{ src: 'lib/js/socket.io.min.js', async: true },
+          			{ src: 'plugin/multiplex/' + role + '.js', async: true },
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
